@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.projetos</groupId>
-	<artifactId>despertagrana</artifactId>
+	<artifactId>gerenciador</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>despertagrana</name>
-	<description>Api de organização financeira.</description>
+	<name>gerenciador</name>
+	<description>Api de agendamento</description>
 	<url/>
 	<licenses>
 		<license/>
