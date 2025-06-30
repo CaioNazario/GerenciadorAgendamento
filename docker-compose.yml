@@ -15,7 +15,7 @@ services:
       - db_data:/var/lib/postgresql/data
     healthcheck:
       # CORRIGIDO: Agora usa a variável ${DB_USER} para ser consistente
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d agenda_aplicacao_db"]
+      test: ["CMD-SHELL", "pg_isready -U caio -d agenda_aplicacao_db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,7 +24,6 @@ services:
   app:
     build: . # Constrói a imagem usando o Dockerfile na pasta atual
     container_name: agenda-app-java # Nome específico para a aplicação
-    restart: always
     depends_on:
       db: # Garante que o banco de dados esteja 'healthy' antes de iniciar a app
         condition: service_healthy
