@@ -1,0 +1,41 @@
+
+
+services:
+  db: # Nome do serviço de banco de dados
+    image: postgres:15-alpine
+    container_name: agenda-app
+    restart: always # Boa prática para reiniciar o container em caso de falha
+    environment:
+      POSTGRES_DB: agenda_aplicacao_db
+      POSTGRES_USER: caio
+      POSTGRES_PASSWORD: C@t4465 # Lembre-se de usar uma senha forte
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      # CORRIGIDO: Agora usa a variável ${DB_USER} para ser consistente
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d agenda_aplicacao_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+      # --- SERVIÇO DA APLICAÇÃO JAVA (A PARTE QUE ESTÁ FALTANDO) ---
+  app:
+    build: .. # Constrói a imagem usando o Dockerfile na pasta atual
+    container_name: agenda-app-java # Nome específico para a aplicação
+    depends_on:
+      db: # Garante que o banco de dados esteja 'healthy' antes de iniciar a app
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      # Mapeia as variáveis do .env para as propriedades do Spring Boot
+      - SPRING_DATASOURCE_URL=${DB_URL}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASS}
+      - JWT_SECRET=${JWT_SECRET}
+
+volumes:
+  db_data:
+    driver: local
