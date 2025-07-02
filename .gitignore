@@ -33,3 +33,5 @@ build/
 .vscode/
 ##Config##
 .env
+##Docker##
+Docker
