@@ -7,8 +7,8 @@ services:
     restart: always # Boa prática para reiniciar o container em caso de falha
     environment:
       POSTGRES_DB: agenda_aplicacao_db
-      POSTGRES_USER: caio
-      POSTGRES_PASSWORD: C@t4465 # Lembre-se de usar uma senha forte
+      POSTGRES_USER: 
+      POSTGRES_PASSWORD:  # Lembre-se de usar uma senha forte
     ports:
       - "5432:5432"
     volumes:
@@ -22,7 +22,7 @@ services:
 
       # --- SERVIÇO DA APLICAÇÃO JAVA (A PARTE QUE ESTÁ FALTANDO) ---
   app:
-    build: .. # Constrói a imagem usando o Dockerfile na pasta atual
+    build: . # Constrói a imagem usando o Dockerfile na pasta atual
     container_name: agenda-app-java # Nome específico para a aplicação
     depends_on:
       db: # Garante que o banco de dados esteja 'healthy' antes de iniciar a app
