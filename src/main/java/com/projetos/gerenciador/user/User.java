@@ -3,15 +3,31 @@ package com.projetos.gerenciador.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
+@Data //set all the getters and setters
 @Entity
-@Table(name="usuario")
-@Data
-public class UserModel {
+@Table(name="usuarios")
+
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nome", nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "email", nullable = false, unique = true )
+    private String email;
+
+    @Column(name = "senha", unique = true, nullable = false)
+    private String password;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private UserRole role;
+
 }
