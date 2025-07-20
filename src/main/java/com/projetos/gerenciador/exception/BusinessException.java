@@ -1,16 +1,17 @@
 package com.projetos.gerenciador.exception;
 
-public class BuisnessException (ErrorCode errorCode){
+public class BusinessException extends RuntimeException {
 
-    private final ErrorCode errorCode;
 
-    public BuisnessException(ErrorCode errorCode) {
-        super(errorCode.getMessage());
-        this.errorCode = errorCode;
-    }
-    public ErrorCode getErrorCode(){
-        return errorCode;
+    private final ErrCode errCode;
+
+    public BusinessException(ErrCode errCode) {
+        super(errCode.getMessage());
+        this.errCode = errCode;
     }
 
+    public ErrCode getErrCode() {
+        return errCode;
+    }
 
 }
