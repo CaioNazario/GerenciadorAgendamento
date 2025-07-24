@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Table(name = "roles")
 @Getter
 @NoArgsConstructor
