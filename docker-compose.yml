@@ -7,10 +7,10 @@ services:
     restart: always # Boa prática para reiniciar o container em caso de falha
     environment:
       POSTGRES_DB: agenda_aplicacao_db
-      POSTGRES_USER: 
-      POSTGRES_PASSWORD:  # Lembre-se de usar uma senha forte
+      POSTGRES_USER: caio
+      POSTGRES_PASSWORD: C@t4465
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
@@ -29,6 +29,7 @@ services:
         condition: service_healthy
     ports:
       - "8080:8080"
+      - "5005:5005"
     environment:
       # Mapeia as variáveis do .env para as propriedades do Spring Boot
       - SPRING_DATASOURCE_URL=${DB_URL}

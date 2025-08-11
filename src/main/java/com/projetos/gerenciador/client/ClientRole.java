@@ -1,4 +1,4 @@
-package com.projetos.gerenciador.user;
+package com.projetos.gerenciador.client;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class UserRole {
+public class ClientRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

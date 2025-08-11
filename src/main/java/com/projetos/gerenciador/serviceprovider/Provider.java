@@ -1,14 +1,14 @@
-package com.projetos.gerenciador.user;
-
+package com.projetos.gerenciador.serviceprovider;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 
+@Table(name="profissionais")
 @Entity
-@Table(name="usuarios")
 @Data
-public class User {
+public class Provider {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,18 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "telefone0", nullable = false)
+    private String phoneNumber;
+
     @Column(name = "senha", unique = true, nullable = false)
     private String password;
 
+//    @Column(name = "descricao", nullable = false)
+//    private String description;
 
 
+    @Column(name = "criado_em", nullable = false)
+    private LocalDateTime createdAt;
 }
+
+

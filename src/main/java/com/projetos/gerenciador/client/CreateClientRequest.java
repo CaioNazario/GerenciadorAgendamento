@@ -1,8 +1,8 @@
-package com.projetos.gerenciador.user;
+package com.projetos.gerenciador.client;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record CreateUserRequest(
+public record CreateClientRequest(
 
         @NotBlank(message = "O nome não pode estar vazio")
         String name,
